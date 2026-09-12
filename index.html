@@ -307,7 +307,7 @@
         <div class="assignment-desc">Hand sketches bridging traditional ideation with AI-assisted conceptualization. Initial marks explore spatial intent and design direction before digital evolution.</div>
       </div>
       <div class="week-title">Week 1-3: Concept Development</div>
-      <div class="gallery" id="week1-gallery"></div>
+      <div class="gallery" id="assignment1-gallery"></div>
     </div>
 
     <!-- ASSIGNMENT 2: DIAGRAMS & MASSING -->
@@ -315,10 +315,10 @@
       <div class="assignment-header">
         <div class="assignment-number">ASSIGNMENT 2</div>
         <div class="assignment-title">Diagram Logic & Massing + Elevation & Materiality</div>
-        <div class="assignment-desc">Architectural diagrams and diagrams communicating design intent. Site analysis, circulation, massing studies, and material palette development through AI-assisted exploration.</div>
+        <div class="assignment-desc">Architectural diagrams communicating design intent. Site analysis, circulation, massing studies, and material palette development through AI-assisted exploration.</div>
       </div>
       <div class="week-title">Week 2-3: Site Analysis & Design Development</div>
-      <div class="gallery" id="week2-gallery"></div>
+      <div class="gallery" id="assignment2-gallery"></div>
     </div>
 
     <!-- ASSIGNMENT 3A & 3B: OPTIONAL BONUS -->
@@ -329,7 +329,7 @@
         <div class="assignment-desc">Rule-based geometry ensuring responsiveness to client changes. Custom AI toolmaking for workflow optimization. Parametric design responsive to environmental and programmatic constraints.</div>
       </div>
       <div class="week-title">Week 3: Parametric & AI Exploration</div>
-      <div class="gallery" id="week3-gallery"></div>
+      <div class="gallery" id="assignment3-gallery"></div>
     </div>
 
     <!-- ASSIGNMENT 4: GENERATIVE FILL -->
@@ -340,7 +340,7 @@
         <div class="assignment-desc">Adobe Firefly generative fill creating diverse contextual variations. Seasonal shifts, diverse populations, environmental conditions, and urban activation narratives.</div>
       </div>
       <div class="week-title">Week 5: Contextual Rendering & Diversity</div>
-      <div class="gallery" id="week4-gallery"></div>
+      <div class="gallery" id="assignment4-gallery"></div>
     </div>
 
     <!-- ASSIGNMENT 5: TECHNICAL DOCUMENTATION -->
@@ -351,7 +351,7 @@
         <div class="assignment-desc">SketchPro AI automating SD → CD conversion. Live BIM coordination, automated annotation, scheduling, and QA/QC validation. Complete construction documentation package (68+ sheets).</div>
       </div>
       <div class="week-title">Week 5-12: Technical Documentation & Construction Sets</div>
-      <div class="gallery" id="week5-gallery"></div>
+      <div class="gallery" id="assignment5-gallery"></div>
     </div>
 
   </section>
@@ -389,229 +389,65 @@
   </div>
 
   <script>
-    // Portfolio data structure
+    // Portfolio data structure - ALL IMAGES IN SINGLE images/ FOLDER
     const portfolioData = {
-      week1: [
-        {
-          title: 'Initial Concept Rendering',
-          desc: 'Multi-family residential project in Oakland with modern materials and street-level perspective',
-          image: 'images/week-1/image-01.jpg'
-        },
-        {
-          title: 'Evening Perspective & Description',
-          desc: 'Four-story mixed-use residential community with evening lighting and courtyard organization',
-          image: 'images/week-1/image-02.jpg'
-        },
-        {
-          title: 'Site Plan',
-          desc: 'Aerial top-view of 2400 Filbert Street, Oakland location with surrounding context',
-          image: 'images/week-1/image-03.jpg'
-        },
-        {
-          title: 'Assignment 1 Brief',
-          desc: 'Translating a Sketch into a Story - Concept, generation, and narrative briefing document',
-          image: 'images/week-1/image-05.jpg'
-        }
+      assignment1: [
+        { title: 'Initial Concept Rendering', desc: 'Multi-family residential project in Oakland with modern materials and street-level perspective', image: 'images/image-01.jpg' },
+        { title: 'Evening Perspective & Description', desc: 'Four-story mixed-use residential community with evening lighting and courtyard organization', image: 'images/image-02.jpg' },
+        { title: 'Site Plan', desc: 'Aerial top-view of 2400 Filbert Street, Oakland location with surrounding context', image: 'images/image-03.jpg' },
+        { title: 'Assignment 1 Brief', desc: 'Translating a Sketch into a Story - Concept, generation, and narrative briefing document', image: 'images/image-05.jpg' }
       ],
-      week2: [
-        {
-          title: '3D Site Context Model',
-          desc: 'Isometric 3D model showing pedestrian approach, views, and noise analysis',
-          image: 'images/week-2/image-06.jpg'
-        },
-        {
-          title: 'Massing Study',
-          desc: 'Four-story building massing with courtyard void and programmatic organization',
-          image: 'images/week-2/image-07.jpg'
-        },
-        {
-          title: 'Program Plan',
-          desc: 'Color-coded program zones with retail, lobby, senior housing, and communal housing',
-          image: 'images/week-2/image-08.jpg'
-        },
-        {
-          title: 'Process Documentation',
-          desc: 'Comprehensive design development showing floor plans, site context, and 3D models',
-          image: 'images/week-2/image-09.jpg'
-        },
-        {
-          title: 'Assignment 2 Brief',
-          desc: 'Thought Process: Diagram, Elevation & Materiality assignment briefing document',
-          image: 'images/week-2/image-10.jpg'
-        }
+      assignment2: [
+        { title: '3D Site Context Model', desc: 'Isometric 3D model showing pedestrian approach, views, and noise analysis', image: 'images/image-06.jpg' },
+        { title: 'Massing Study', desc: 'Four-story building massing with courtyard void and programmatic organization', image: 'images/image-07.jpg' },
+        { title: 'Program Plan', desc: 'Color-coded program zones with retail, lobby, senior housing, and communal housing', image: 'images/image-08.jpg' },
+        { title: 'Process Documentation', desc: 'Comprehensive design development showing floor plans, site context, and 3D models', image: 'images/image-09.jpg' },
+        { title: 'Assignment 2 Brief', desc: 'Thought Process: Diagram, Elevation & Materiality assignment briefing document', image: 'images/image-10.jpg' }
       ],
-      week3: [
-        {
-          title: 'Parametric Design Strategy Brief',
-          desc: 'Assignment 3B: Six responsive scenarios for client-driven parametric logic',
-          image: 'images/week-3/image-11.jpg'
-        },
-        {
-          title: 'Custom AI Tool Concept Brief',
-          desc: 'Assignment 3A: Problem definition and AI tool concept for sketch-to-model translation',
-          image: 'images/week-3/image-12.jpg'
-        },
-        {
-          title: 'Parametric Scenarios',
-          desc: 'Six responsive design scenarios demonstrating parametric logic',
-          image: 'images/week-3/image-13.jpg'
-        },
-        {
-          title: 'AI Tool Concept',
-          desc: 'Custom AI tool concept for bridging hand drawing and parametric modeling',
-          image: 'images/week-3/image-14.jpg'
-        }
+      assignment3: [
+        { title: 'Parametric Design Strategy Brief', desc: 'Assignment 3B: Six responsive scenarios for client-driven parametric logic', image: 'images/image-11.jpg' },
+        { title: 'Custom AI Tool Concept Brief', desc: 'Assignment 3A: Problem definition and AI tool concept for sketch-to-model translation', image: 'images/image-12.jpg' },
+        { title: 'Parametric Scenarios', desc: 'Six responsive design scenarios demonstrating parametric logic', image: 'images/image-13.jpg' },
+        { title: 'AI Tool Concept', desc: 'Custom AI tool concept for bridging hand drawing and parametric modeling', image: 'images/image-14.jpg' }
       ],
-      week4: [
-        {
-          title: 'Holiday Market Scene',
-          desc: 'Generative fill with diverse population in festive holiday atmosphere',
-          image: 'images/week-4/image-15.jpg'
-        },
-        {
-          title: 'Winter Season Variation',
-          desc: 'Same scene transformed with winter conditions and snow',
-          image: 'images/week-4/image-16.jpg'
-        },
-        {
-          title: 'Assignment 4 Brief',
-          desc: 'Contextualizing the Render: Generative Fill assignment briefing',
-          image: 'images/week-4/image-17.jpg'
-        },
-        {
-          title: 'Diversity Variation',
-          desc: 'Base image with Generative Fill applied for diverse population representation',
-          image: 'images/week-4/image-18.jpg'
-        }
+      assignment4: [
+        { title: 'Holiday Market Scene', desc: 'Generative fill with diverse population in festive holiday atmosphere', image: 'images/image-15.jpg' },
+        { title: 'Winter Season Variation', desc: 'Same scene transformed with winter conditions and snow', image: 'images/image-16.jpg' },
+        { title: 'Assignment 4 Brief', desc: 'Contextualizing the Render: Generative Fill assignment briefing', image: 'images/image-17.jpg' },
+        { title: 'Diversity Variation', desc: 'Base image with Generative Fill applied for diverse population representation', image: 'images/image-18.jpg' }
       ],
-      week5: [
-        {
-          title: 'SketchPro BIM Documentation',
-          desc: 'Fire-rated partitions analysis with AI-assisted SD→CD automation',
-          image: 'images/week-5/image-19.jpg'
-        },
-        {
-          title: 'Street Elevation',
-          desc: 'Isometric elevation showing contextual relationship with existing buildings',
-          image: 'images/week-5/image-20.jpg'
-        },
-        {
-          title: 'Project Credits',
-          desc: 'Interdisciplinary consulting team for comprehensive project delivery',
-          image: 'images/week-5/image-21.jpg'
-        },
-        {
-          title: 'BIM Coordination',
-          desc: 'Advanced Revit floor plan with SketchPro AI live analysis and guidance',
-          image: 'images/week-5/image-22.jpg'
-        },
-        {
-          title: 'Revit QA/QC Documentation',
-          desc: 'Fire-rated partition analysis with SketchPro Tech Preview troubleshooting',
-          image: 'images/week-5/image-23.jpg'
-        },
-        {
-          title: 'Assignment 5 Brief',
-          desc: 'Automating the Blueprint: From Model to Issuance briefing document',
-          image: 'images/week-5/image-24.jpg'
-        },
-        {
-          title: 'CD SET Presentation',
-          desc: 'Professional presentation board with rendered perspective and sheet organization',
-          image: 'images/week-5/image-25.jpg'
-        },
-        {
-          title: 'Project Site Location',
-          desc: 'Satellite map of Oakland, CA project site with neighborhood context',
-          image: 'images/week-5/image-26.jpg'
-        },
-        {
-          title: 'Consulting Team Reference',
-          desc: 'Professional consulting team credentials and project management structure',
-          image: 'images/week-5/image-27.jpg'
-        },
-        {
-          title: 'Sample Project Board',
-          desc: 'Example project presentation with historical context documentation',
-          image: 'images/week-5/image-28.jpg'
-        },
-        {
-          title: 'Live Scheduling & BIM',
-          desc: 'SketchPro automating live schedule extraction and coordination',
-          image: 'images/week-5/image-29.jpg'
-        },
-        {
-          title: 'Automated Schedule Export',
-          desc: 'L2 Wall Count by Type schedule and comprehensive sheet index (68 sheets)',
-          image: 'images/week-5/image-30.jpg'
-        },
-        {
-          title: 'Door & Window Schedules',
-          desc: 'Comprehensive door and window schedules extracted from live BIM model (A601)',
-          image: 'images/week-5/image-31.jpg'
-        },
-        {
-          title: 'Partition & Room Finish Schedules',
-          desc: 'Fire-rated partition assemblies and room-by-room finish specifications (A602)',
-          image: 'images/week-5/image-32.jpg'
-        },
-        {
-          title: 'Building Elevations',
-          desc: 'Street-facing and rear residential facades showing material articulation (A201)',
-          image: 'images/week-5/image-33.jpg'
-        },
-        {
-          title: 'Architectural Details',
-          desc: 'Construction details showing roof, window, stair, and railing assemblies (A501)',
-          image: 'images/week-5/image-34.jpg'
-        },
-        {
-          title: 'Parking Level Floor Plan',
-          desc: 'Below-grade parking with efficient stall layout and accessibility compliance (A100)',
-          image: 'images/week-5/image-35.jpg'
-        },
-        {
-          title: 'Level 1 Floor Plan',
-          desc: 'Ground floor retail/commercial activation with public gathering space (A101)',
-          image: 'images/week-5/image-36.jpg'
-        },
-        {
-          title: 'Level 2 Floor Plan',
-          desc: 'Residential stacking strategy with communal amenities and program variety (A102)',
-          image: 'images/week-5/image-37.jpg'
-        },
-        {
-          title: 'Building Sections',
-          desc: 'Full-height cross-sections showing vertical organization and structural logic (A301)',
-          image: 'images/week-5/image-38.jpg'
-        },
-        {
-          title: 'Interior Elevations',
-          desc: 'Restroom, break room, office workspace details at construction scale (A401)',
-          image: 'images/week-5/image-39.jpg'
-        },
-        {
-          title: 'Level 5 Floor Plan',
-          desc: 'Roof-level mixed-use programming with offices, residences, and outdoor spaces (A105)',
-          image: 'images/week-5/image-40.jpg'
-        },
-        {
-          title: 'Roof Plan',
-          desc: 'Mechanical, structural, and drainage coordination at roof level (A106)',
-          image: 'images/week-5/image-41.jpg'
-        },
-        {
-          title: 'Final CD SET Board',
-          desc: 'Complete issuance-ready documentation package with 68+ sheets (STEP-1 SD-CD)',
-          image: 'images/week-5/image-42.jpg'
-        }
+      assignment5: [
+        { title: 'SketchPro BIM Documentation', desc: 'Fire-rated partitions analysis with AI-assisted SD→CD automation', image: 'images/image-19.jpg' },
+        { title: 'Street Elevation', desc: 'Isometric elevation showing contextual relationship with existing buildings', image: 'images/image-20.jpg' },
+        { title: 'Project Credits', desc: 'Interdisciplinary consulting team for comprehensive project delivery', image: 'images/image-21.jpg' },
+        { title: 'BIM Coordination', desc: 'Advanced Revit floor plan with SketchPro AI live analysis and guidance', image: 'images/image-22.jpg' },
+        { title: 'Revit QA/QC Documentation', desc: 'Fire-rated partition analysis with SketchPro Tech Preview troubleshooting', image: 'images/image-23.jpg' },
+        { title: 'Assignment 5 Brief', desc: 'Automating the Blueprint: From Model to Issuance briefing document', image: 'images/image-24.jpg' },
+        { title: 'CD SET Presentation', desc: 'Professional presentation board with rendered perspective and sheet organization', image: 'images/image-25.jpg' },
+        { title: 'Project Site Location', desc: 'Satellite map of Oakland, CA project site with neighborhood context', image: 'images/image-26.jpg' },
+        { title: 'Consulting Team Reference', desc: 'Professional consulting team credentials and project management structure', image: 'images/image-27.jpg' },
+        { title: 'Sample Project Board', desc: 'Example project presentation with historical context documentation', image: 'images/image-28.jpg' },
+        { title: 'Live Scheduling & BIM', desc: 'SketchPro automating live schedule extraction and coordination', image: 'images/image-29.jpg' },
+        { title: 'Automated Schedule Export', desc: 'L2 Wall Count by Type schedule and comprehensive sheet index (68 sheets)', image: 'images/image-30.jpg' },
+        { title: 'Door & Window Schedules', desc: 'Comprehensive door and window schedules extracted from live BIM model (A601)', image: 'images/image-31.jpg' },
+        { title: 'Partition & Room Finish Schedules', desc: 'Fire-rated partition assemblies and room-by-room finish specifications (A602)', image: 'images/image-32.jpg' },
+        { title: 'Building Elevations', desc: 'Street-facing and rear residential facades showing material articulation (A201)', image: 'images/image-33.jpg' },
+        { title: 'Architectural Details', desc: 'Construction details showing roof, window, stair, and railing assemblies (A501)', image: 'images/image-34.jpg' },
+        { title: 'Parking Level Floor Plan', desc: 'Below-grade parking with efficient stall layout and accessibility compliance (A100)', image: 'images/image-35.jpg' },
+        { title: 'Level 1 Floor Plan', desc: 'Ground floor retail/commercial activation with public gathering space (A101)', image: 'images/image-36.jpg' },
+        { title: 'Level 2 Floor Plan', desc: 'Residential stacking strategy with communal amenities and program variety (A102)', image: 'images/image-37.jpg' },
+        { title: 'Building Sections', desc: 'Full-height cross-sections showing vertical organization and structural logic (A301)', image: 'images/image-38.jpg' },
+        { title: 'Interior Elevations', desc: 'Restroom, break room, office workspace details at construction scale (A401)', image: 'images/image-39.jpg' },
+        { title: 'Level 5 Floor Plan', desc: 'Roof-level mixed-use programming with offices, residences, and outdoor spaces (A105)', image: 'images/image-40.jpg' },
+        { title: 'Roof Plan', desc: 'Mechanical, structural, and drainage coordination at roof level (A106)', image: 'images/image-41.jpg' },
+        { title: 'Final CD SET Board', desc: 'Complete issuance-ready documentation package with 68+ sheets (STEP-1 SD-CD)', image: 'images/image-42.jpg' }
       ]
     };
 
     // Populate galleries
-    function populateGallery(weekKey, galleryId) {
+    function populateGallery(assignmentKey, galleryId) {
       const gallery = document.getElementById(galleryId);
-      const images = portfolioData[weekKey];
+      const images = portfolioData[assignmentKey];
       
       if (images) {
         images.forEach((img, idx) => {
@@ -619,7 +455,7 @@
           card.className = 'image-card';
           card.onclick = () => openModal(img.image, img.title, img.desc);
           card.innerHTML = `
-            <img src="${img.image}" alt="${img.title}" onerror="this.style.background='#ddd'; this.style.color='#999'" />
+            <img src="${img.image}" alt="${img.title}" onerror="this.style.background='#ddd'; this.style.color='#999'; this.innerHTML='Image not found'" />
             <div class="image-card-info">
               <div class="image-card-title">${img.title}</div>
               <div class="image-card-desc">${img.desc}</div>
@@ -646,11 +482,11 @@
 
     // Initialize
     window.addEventListener('load', () => {
-      populateGallery('week1', 'week1-gallery');
-      populateGallery('week2', 'week2-gallery');
-      populateGallery('week3', 'week3-gallery');
-      populateGallery('week4', 'week4-gallery');
-      populateGallery('week5', 'week5-gallery');
+      populateGallery('assignment1', 'assignment1-gallery');
+      populateGallery('assignment2', 'assignment2-gallery');
+      populateGallery('assignment3', 'assignment3-gallery');
+      populateGallery('assignment4', 'assignment4-gallery');
+      populateGallery('assignment5', 'assignment5-gallery');
     });
 
     // Close modal on background click
