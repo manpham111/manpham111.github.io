@@ -2,213 +2,662 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>TITAN Pavilion — AI-Assisted Architecture Portfolio</title>
+  <title>Man Pham — AI-Assisted Architecture Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f5f5f5;
-      color: #111;
-      line-height: 1.6;
+      padding: 0;
+      box-sizing: border-box;
     }
-    h1, h2, h3 {
-      font-weight: 300;
-      letter-spacing: 0.5px;
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f0f0;
+      color: #222;
+      line-height: 1.7;
     }
-    a {
-      color: #00E5FF;
-      text-decoration: none;
-    }
+    
     nav {
       position: fixed;
       top: 0;
       width: 100%;
-      background: #111;
-      padding: 12px 20px;
+      background: #1a1a1a;
+      padding: 16px 40px;
       z-index: 1000;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }
-    nav a {
+    
+    nav .logo {
       color: white;
-      margin-left: 20px;
-      font-size: 14px;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 1px;
     }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+    
+    nav a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: color 0.3s ease;
+    }
+    
     nav a:hover {
       color: #00E5FF;
     }
+    
     section {
-      padding: 80px 20px;
-      max-width: 1100px;
-      margin: auto;
+      padding: 100px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
-    .placeholder {
-      width: 100%;
-      height: 220px;
-      background: #ddd;
-      border: 1px solid #ccc;
-      margin: 20px 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    
+    section:first-of-type {
+      padding-top: 120px;
+    }
+    
+    h1 {
+      font-size: 48px;
+      font-weight: 300;
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+      color: #111;
+    }
+    
+    h2 {
+      font-size: 36px;
+      font-weight: 300;
+      margin-bottom: 30px;
+      border-bottom: 2px solid #00E5FF;
+      padding-bottom: 15px;
+      color: #111;
+    }
+    
+    h3 {
+      font-size: 24px;
+      font-weight: 400;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    
+    p {
+      margin-bottom: 16px;
+      font-size: 15px;
+      line-height: 1.8;
       color: #555;
-      font-size: 16px;
     }
+    
     .button {
       display: inline-block;
-      padding: 10px 20px;
+      padding: 14px 32px;
       background: #00E5FF;
       color: #111;
       border-radius: 4px;
-      margin-top: 20px;
-      font-weight: bold;
+      margin-top: 24px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.3s ease;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
+    
     .button:hover {
       background: #00c7dd;
     }
+    
+    .week-section {
+      margin-bottom: 60px;
+      background: white;
+      padding: 30px;
+      border-left: 4px solid #00E5FF;
+    }
+    
+    .week-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #00E5FF;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+    
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin: 30px 0;
+    }
+    
+    .image-card {
+      background: #fafafa;
+      border: 1px solid #ddd;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .image-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+    
+    .image-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+    
+    .image-card-info {
+      padding: 16px;
+    }
+    
+    .image-card-title {
+      font-weight: 600;
+      font-size: 14px;
+      color: #111;
+      margin-bottom: 8px;
+    }
+    
+    .image-card-desc {
+      font-size: 13px;
+      color: #777;
+      line-height: 1.5;
+    }
+    
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    
+    .modal.active {
+      display: flex;
+    }
+    
+    .modal-content {
+      max-width: 90%;
+      max-height: 90vh;
+      position: relative;
+      background: white;
+      padding: 20px;
+    }
+    
+    .modal-content img {
+      max-width: 100%;
+      max-height: 80vh;
+      display: block;
+    }
+    
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      color: white;
+      font-size: 32px;
+      cursor: pointer;
+      font-weight: 300;
+    }
+    
+    .modal-description {
+      margin-top: 20px;
+      color: white;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    
     html {
       scroll-behavior: smooth;
+    }
+    
+    .intro-text {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 30px;
+      line-height: 1.8;
+    }
+    
+    ul {
+      margin-left: 20px;
+    }
+    
+    li {
+      margin-bottom: 12px;
+      color: #555;
+    }
+    
+    .assignment-header {
+      background: #f5f5f5;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-left: 4px solid #333;
+    }
+    
+    .assignment-number {
+      font-size: 14px;
+      font-weight: 700;
+      color: #00E5FF;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+    }
+    
+    .assignment-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #111;
+    }
+    
+    .assignment-desc {
+      font-size: 13px;
+      color: #777;
+      margin-top: 10px;
+      line-height: 1.6;
     }
   </style>
 </head>
 <body>
 
   <nav>
-    <div style="color:white; font-weight:bold;">TITAN Pavilion</div>
-    <div>
-      <a href="#home">Home</a>
-      <a href="#case">Case Study</a>
-      <a href="#workflow">AI Workflow</a>
-      <a href="#toolkit">Toolkit</a>
-      <a href="#business">Business Strategy</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </div>
+    <div class="logo">Man Pham — Architecture</div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
   </nav>
 
   <section id="home">
-    <h1>AI-Assisted Architectural Case Study — Pavilion Design (2026)</h1>
-    <p>This portfolio documents a full-semester exploration of a mixed-use pavilion project developed through hand sketching, AI-assisted iteration, parametric logic, and advanced visualization.</p>
-    <a class="button" href="#case">Explore Case Study</a>
+    <h1>AI-Assisted Architecture Portfolio</h1>
+    <p class="intro-text">Full-semester exploration of mixed-use pavilion design through hand sketching, AI iteration, parametric logic, technical documentation, and advanced visualization. This portfolio documents 15 weeks of architectural development integrating cutting-edge AI tools with traditional design thinking.</p>
+    <a class="button" href="#portfolio">View Full Portfolio</a>
   </section>
 
-  <section id="case">
-    <h2>Case Study — Pavilion Design Journey</h2>
+  <section id="portfolio">
+    <h2>Complete Project Portfolio</h2>
+    
+    <!-- ASSIGNMENT 1: CONCEPT GENESIS -->
+    <div class="week-section">
+      <div class="assignment-header">
+        <div class="assignment-number">ASSIGNMENT 1</div>
+        <div class="assignment-title">Concept Genesis: Translating Sketch into Story</div>
+        <div class="assignment-desc">Hand sketches bridging traditional ideation with AI-assisted conceptualization. Initial marks explore spatial intent and design direction before digital evolution.</div>
+      </div>
+      <div class="week-title">Week 1-3: Concept Development</div>
+      <div class="gallery" id="week1-gallery"></div>
+    </div>
 
-    <h3>1. Concept Genesis (Week 1)</h3>
-    <div class="placeholder">Image Placeholder — Concept Sketch</div>
-    <p>Early hand sketches established the pavilion's identity: openness, daylight, and communal flow. AI tools evolved these sketches into concept images exploring massing, materiality, and evening activation.</p>
+    <!-- ASSIGNMENT 2: DIAGRAMS & MASSING -->
+    <div class="week-section">
+      <div class="assignment-header">
+        <div class="assignment-number">ASSIGNMENT 2</div>
+        <div class="assignment-title">Diagram Logic & Massing + Elevation & Materiality</div>
+        <div class="assignment-desc">Architectural diagrams and diagrams communicating design intent. Site analysis, circulation, massing studies, and material palette development through AI-assisted exploration.</div>
+      </div>
+      <div class="week-title">Week 2-3: Site Analysis & Design Development</div>
+      <div class="gallery" id="week2-gallery"></div>
+    </div>
 
-    <h3>2. Diagram Logic & Massing (Week 2)</h3>
-    <div class="placeholder">Image Placeholder — Diagrams</div>
-    <p>Circulation, daylight, noise, and program diagrams clarified the project's intent. AI-assisted massing studies carved a courtyard void and organized residential wings.</p>
+    <!-- ASSIGNMENT 3A & 3B: OPTIONAL BONUS -->
+    <div class="week-section">
+      <div class="assignment-header">
+        <div class="assignment-number">ASSIGNMENTS 3A & 3B (OPTIONAL)</div>
+        <div class="assignment-title">Custom AI Tool Concept + Parametric Design Strategy</div>
+        <div class="assignment-desc">Rule-based geometry ensuring responsiveness to client changes. Custom AI toolmaking for workflow optimization. Parametric design responsive to environmental and programmatic constraints.</div>
+      </div>
+      <div class="week-title">Week 3: Parametric & AI Exploration</div>
+      <div class="gallery" id="week3-gallery"></div>
+    </div>
 
-    <h3>3. Elevation & Materiality (Week 2)</h3>
-    <div class="placeholder">Image Placeholder — Elevations</div>
-    <p>Façade rhythm, glazing proportions, and shading strategies were refined. A curated material palette blended concrete, fiber-cement, wood, and perforated metal.</p>
+    <!-- ASSIGNMENT 4: GENERATIVE FILL -->
+    <div class="week-section">
+      <div class="assignment-header">
+        <div class="assignment-number">ASSIGNMENT 4</div>
+        <div class="assignment-title">Contextualizing the Render: Generative Fill Variations</div>
+        <div class="assignment-desc">Adobe Firefly generative fill creating diverse contextual variations. Seasonal shifts, diverse populations, environmental conditions, and urban activation narratives.</div>
+      </div>
+      <div class="week-title">Week 5: Contextual Rendering & Diversity</div>
+      <div class="gallery" id="week4-gallery"></div>
+    </div>
 
-    <h3>4. Custom AI Tool Concept (Week 3)</h3>
-    <p>A conceptual AI tool was proposed to translate ambiguous sketches into structured massing models using site data and program requirements.</p>
+    <!-- ASSIGNMENT 5: TECHNICAL DOCUMENTATION -->
+    <div class="week-section">
+      <div class="assignment-header">
+        <div class="assignment-number">ASSIGNMENT 5</div>
+        <div class="assignment-title">Automating the Blueprint: From Model to Issuance</div>
+        <div class="assignment-desc">SketchPro AI automating SD → CD conversion. Live BIM coordination, automated annotation, scheduling, and QA/QC validation. Complete construction documentation package (68+ sheets).</div>
+      </div>
+      <div class="week-title">Week 5-12: Technical Documentation & Construction Sets</div>
+      <div class="gallery" id="week5-gallery"></div>
+    </div>
 
-    <h3>5. Parametric + AI Strategy (Week 4)</h3>
-    <p>Rule-based geometry ensured responsiveness to client changes while preserving narrative coherence. AI tested façade variations and environmental logic.</p>
-
-    <h3>6. Contextual Rendering Variations (Week 5)</h3>
-    <div class="placeholder">Image Placeholder — Render Variations</div>
-    <p>Generative Fill added diversity, seasonal shifts, and environmental context to a base render.</p>
-
-    <h3>7. Technical Documentation Layer (Week 5)</h3>
-    <p>SketchPro AI automated SD → CD sheet generation, annotation, scheduling, and QA/QC.</p>
-
-    <h3>8. Cinematic Pavilion Animation (Week 6)</h3>
-    <div class="placeholder">Image Placeholder — Animation Still</div>
-    <p>A 60-second animation communicated spatial experience through curated camera paths, lighting, and pacing.</p>
-
-    <h3>9. Construction Strategy & Administration (Week 6)</h3>
-    <p>A full construction proposal included phasing, schedule, cost estimate, risk log, site observation report, and benchmarking memo.</p>
-
-    <h3>10. Business Strategy & Proposal (Week 7)</h3>
-    <p>The NEXUS Pavilion proposal defined market positioning, target clients, value proposition, architectural concept, and an executive summary.</p>
-
-    <h3>11. Design Development (Week 8)</h3>
-    <p>Geometry, materiality, and spatial programming were refined using AI-assisted optimization.</p>
-
-    <h3>12. Advanced Rendering (Week 9)</h3>
-    <div class="placeholder">Image Placeholder — Final Render</div>
-    <p>Exterior and interior renders were produced with AI-assisted lighting and post-processing.</p>
-
-    <h3>13. Final Drawings (Week 10)</h3>
-    <p>Plans, sections, and elevations were finalized with automated annotation and tagging.</p>
-
-    <h3>14. Final Model + QA/QC (Week 11)</h3>
-    <p>The final model underwent clash detection, schedule validation, and sheet set review.</p>
-
-    <h3>15. Final Presentation (Week 12)</h3>
-    <div class="placeholder">Image Placeholder — Presentation Board</div>
-    <p>Final boards and animation were assembled into a cohesive presentation package.</p>
-  </section>
-
-  <section id="workflow">
-    <h2>AI Workflow Documentation</h2>
-    <p>Transparent documentation of every AI-assisted step in the design process.</p>
-    <ul>
-      <li>Sketch → AI Pipeline</li>
-      <li>Diagram → AI Pipeline</li>
-      <li>Elevation → Material Pipeline</li>
-      <li>Parametric Logic Pipeline</li>
-      <li>Generative Fill Pipeline</li>
-      <li>SD → CD Automation Pipeline</li>
-      <li>Animation Pipeline</li>
-      <li>Construction Documentation Pipeline</li>
-      <li>Business Development Pipeline</li>
-    </ul>
-  </section>
-
-  <section id="toolkit">
-    <h2>AI Practice Toolkit</h2>
-    <p>A complete set of prompts, workflows, and tools used throughout the project.</p>
-
-    <h3>Prompt Library</h3>
-    <p>Concept, diagram, material, rendering, animation, construction, and business strategy prompts.</p>
-
-    <h3>Workflow Templates</h3>
-    <p>Reusable templates for AI-assisted design tasks.</p>
-
-    <h3>Tool Index</h3>
-    <p>RunDiffusion, Firefly, SketchPro, parametric tools, animation tools, CA tools, BD tools.</p>
-
-    <h3>Best Practices</h3>
-    <p>Transparency, diversity, environmental variation, QA/QC, narrative clarity.</p>
-  </section>
-
-  <section id="business">
-    <h2>Business Strategy & Proposal</h2>
-    <p>The NEXUS Pavilion proposal defines a market strategy for an AI-forward experiential pavilion.</p>
-    <div class="placeholder">Image Placeholder — NEXUS Graphic</div>
-    <ul>
-      <li>Strategy & Positioning</li>
-      <li>Target Client Matrix</li>
-      <li>Value Proposition</li>
-      <li>Proposal Concept</li>
-      <li>Executive Summary</li>
-      <li>Implementation Roadmap</li>
-      <li>Risk Matrix</li>
-    </ul>
   </section>
 
   <section id="about">
-    <h2>About TITAN</h2>
-    <p>Architectural designer specializing in AI-assisted workflows, computational design, and mixed-use housing. This portfolio represents a full-semester exploration of how artificial intelligence can augment architectural thinking across concept, development, documentation, and storytelling.</p>
+    <h2>About This Portfolio</h2>
+    <p>This portfolio represents a comprehensive semester-long exploration of how AI tools can enhance traditional architectural practice. Rather than replacing design thinking, these tools amplify it—enabling rapid iteration, diverse exploration, and rigorous documentation.</p>
+    <h3>Key Outcomes</h3>
+    <ul>
+      <li><strong>42 Project Images</strong> — Spanning concept through construction documentation</li>
+      <li><strong>15 Weeks of Development</strong> — From initial sketch to final issuance-ready drawings</li>
+      <li><strong>5 Major Assignments</strong> — Concept, analysis, parametrics, rendering, and technical documentation</li>
+      <li><strong>68+ Construction Documents</strong> — Plans, sections, elevations, details, and schedules</li>
+      <li><strong>Complete BIM Coordination</strong> — Live scheduling, automated annotation, QA/QC validation</li>
+    </ul>
   </section>
 
   <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: titanstudio@design.ai</p>
-    <p>Location: Los Angeles, CA</p>
-    <p>Available for collaboration, consulting, and design partnerships.</p>
+    <h2>Contact & Collaboration</h2>
+    <p>Interested in AI-assisted design workflows, parametric architecture, or computational design? I'm available for consultation, collaboration, and design partnerships.</p>
+    <p><strong>Email:</strong> manpham111@email.com</p>
+    <p><strong>GitHub:</strong> <a href="https://github.com/manpham111">github.com/manpham111</a></p>
+    <p><strong>Location:</strong> Oakland, CA</p>
   </section>
+
+  <!-- MODAL FOR IMAGE VIEWING -->
+  <div class="modal" id="imageModal">
+    <div style="position: relative; width: 100%; max-width: 90vw;">
+      <span class="modal-close" onclick="closeModal()">&times;</span>
+      <div class="modal-content">
+        <img id="modalImage" src="" alt="" />
+        <div class="modal-description" id="modalDesc"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Portfolio data structure
+    const portfolioData = {
+      week1: [
+        {
+          title: 'Initial Concept Rendering',
+          desc: 'Multi-family residential project in Oakland with modern materials and street-level perspective',
+          image: 'images/week-1/image-01.jpg'
+        },
+        {
+          title: 'Evening Perspective & Description',
+          desc: 'Four-story mixed-use residential community with evening lighting and courtyard organization',
+          image: 'images/week-1/image-02.jpg'
+        },
+        {
+          title: 'Site Plan',
+          desc: 'Aerial top-view of 2400 Filbert Street, Oakland location with surrounding context',
+          image: 'images/week-1/image-03.jpg'
+        },
+        {
+          title: 'Assignment 1 Brief',
+          desc: 'Translating a Sketch into a Story - Concept, generation, and narrative briefing document',
+          image: 'images/week-1/image-05.jpg'
+        }
+      ],
+      week2: [
+        {
+          title: '3D Site Context Model',
+          desc: 'Isometric 3D model showing pedestrian approach, views, and noise analysis',
+          image: 'images/week-2/image-06.jpg'
+        },
+        {
+          title: 'Massing Study',
+          desc: 'Four-story building massing with courtyard void and programmatic organization',
+          image: 'images/week-2/image-07.jpg'
+        },
+        {
+          title: 'Program Plan',
+          desc: 'Color-coded program zones with retail, lobby, senior housing, and communal housing',
+          image: 'images/week-2/image-08.jpg'
+        },
+        {
+          title: 'Process Documentation',
+          desc: 'Comprehensive design development showing floor plans, site context, and 3D models',
+          image: 'images/week-2/image-09.jpg'
+        },
+        {
+          title: 'Assignment 2 Brief',
+          desc: 'Thought Process: Diagram, Elevation & Materiality assignment briefing document',
+          image: 'images/week-2/image-10.jpg'
+        }
+      ],
+      week3: [
+        {
+          title: 'Parametric Design Strategy Brief',
+          desc: 'Assignment 3B: Six responsive scenarios for client-driven parametric logic',
+          image: 'images/week-3/image-11.jpg'
+        },
+        {
+          title: 'Custom AI Tool Concept Brief',
+          desc: 'Assignment 3A: Problem definition and AI tool concept for sketch-to-model translation',
+          image: 'images/week-3/image-12.jpg'
+        },
+        {
+          title: 'Parametric Scenarios',
+          desc: 'Six responsive design scenarios demonstrating parametric logic',
+          image: 'images/week-3/image-13.jpg'
+        },
+        {
+          title: 'AI Tool Concept',
+          desc: 'Custom AI tool concept for bridging hand drawing and parametric modeling',
+          image: 'images/week-3/image-14.jpg'
+        }
+      ],
+      week4: [
+        {
+          title: 'Holiday Market Scene',
+          desc: 'Generative fill with diverse population in festive holiday atmosphere',
+          image: 'images/week-4/image-15.jpg'
+        },
+        {
+          title: 'Winter Season Variation',
+          desc: 'Same scene transformed with winter conditions and snow',
+          image: 'images/week-4/image-16.jpg'
+        },
+        {
+          title: 'Assignment 4 Brief',
+          desc: 'Contextualizing the Render: Generative Fill assignment briefing',
+          image: 'images/week-4/image-17.jpg'
+        },
+        {
+          title: 'Diversity Variation',
+          desc: 'Base image with Generative Fill applied for diverse population representation',
+          image: 'images/week-4/image-18.jpg'
+        }
+      ],
+      week5: [
+        {
+          title: 'SketchPro BIM Documentation',
+          desc: 'Fire-rated partitions analysis with AI-assisted SD→CD automation',
+          image: 'images/week-5/image-19.jpg'
+        },
+        {
+          title: 'Street Elevation',
+          desc: 'Isometric elevation showing contextual relationship with existing buildings',
+          image: 'images/week-5/image-20.jpg'
+        },
+        {
+          title: 'Project Credits',
+          desc: 'Interdisciplinary consulting team for comprehensive project delivery',
+          image: 'images/week-5/image-21.jpg'
+        },
+        {
+          title: 'BIM Coordination',
+          desc: 'Advanced Revit floor plan with SketchPro AI live analysis and guidance',
+          image: 'images/week-5/image-22.jpg'
+        },
+        {
+          title: 'Revit QA/QC Documentation',
+          desc: 'Fire-rated partition analysis with SketchPro Tech Preview troubleshooting',
+          image: 'images/week-5/image-23.jpg'
+        },
+        {
+          title: 'Assignment 5 Brief',
+          desc: 'Automating the Blueprint: From Model to Issuance briefing document',
+          image: 'images/week-5/image-24.jpg'
+        },
+        {
+          title: 'CD SET Presentation',
+          desc: 'Professional presentation board with rendered perspective and sheet organization',
+          image: 'images/week-5/image-25.jpg'
+        },
+        {
+          title: 'Project Site Location',
+          desc: 'Satellite map of Oakland, CA project site with neighborhood context',
+          image: 'images/week-5/image-26.jpg'
+        },
+        {
+          title: 'Consulting Team Reference',
+          desc: 'Professional consulting team credentials and project management structure',
+          image: 'images/week-5/image-27.jpg'
+        },
+        {
+          title: 'Sample Project Board',
+          desc: 'Example project presentation with historical context documentation',
+          image: 'images/week-5/image-28.jpg'
+        },
+        {
+          title: 'Live Scheduling & BIM',
+          desc: 'SketchPro automating live schedule extraction and coordination',
+          image: 'images/week-5/image-29.jpg'
+        },
+        {
+          title: 'Automated Schedule Export',
+          desc: 'L2 Wall Count by Type schedule and comprehensive sheet index (68 sheets)',
+          image: 'images/week-5/image-30.jpg'
+        },
+        {
+          title: 'Door & Window Schedules',
+          desc: 'Comprehensive door and window schedules extracted from live BIM model (A601)',
+          image: 'images/week-5/image-31.jpg'
+        },
+        {
+          title: 'Partition & Room Finish Schedules',
+          desc: 'Fire-rated partition assemblies and room-by-room finish specifications (A602)',
+          image: 'images/week-5/image-32.jpg'
+        },
+        {
+          title: 'Building Elevations',
+          desc: 'Street-facing and rear residential facades showing material articulation (A201)',
+          image: 'images/week-5/image-33.jpg'
+        },
+        {
+          title: 'Architectural Details',
+          desc: 'Construction details showing roof, window, stair, and railing assemblies (A501)',
+          image: 'images/week-5/image-34.jpg'
+        },
+        {
+          title: 'Parking Level Floor Plan',
+          desc: 'Below-grade parking with efficient stall layout and accessibility compliance (A100)',
+          image: 'images/week-5/image-35.jpg'
+        },
+        {
+          title: 'Level 1 Floor Plan',
+          desc: 'Ground floor retail/commercial activation with public gathering space (A101)',
+          image: 'images/week-5/image-36.jpg'
+        },
+        {
+          title: 'Level 2 Floor Plan',
+          desc: 'Residential stacking strategy with communal amenities and program variety (A102)',
+          image: 'images/week-5/image-37.jpg'
+        },
+        {
+          title: 'Building Sections',
+          desc: 'Full-height cross-sections showing vertical organization and structural logic (A301)',
+          image: 'images/week-5/image-38.jpg'
+        },
+        {
+          title: 'Interior Elevations',
+          desc: 'Restroom, break room, office workspace details at construction scale (A401)',
+          image: 'images/week-5/image-39.jpg'
+        },
+        {
+          title: 'Level 5 Floor Plan',
+          desc: 'Roof-level mixed-use programming with offices, residences, and outdoor spaces (A105)',
+          image: 'images/week-5/image-40.jpg'
+        },
+        {
+          title: 'Roof Plan',
+          desc: 'Mechanical, structural, and drainage coordination at roof level (A106)',
+          image: 'images/week-5/image-41.jpg'
+        },
+        {
+          title: 'Final CD SET Board',
+          desc: 'Complete issuance-ready documentation package with 68+ sheets (STEP-1 SD-CD)',
+          image: 'images/week-5/image-42.jpg'
+        }
+      ]
+    };
+
+    // Populate galleries
+    function populateGallery(weekKey, galleryId) {
+      const gallery = document.getElementById(galleryId);
+      const images = portfolioData[weekKey];
+      
+      if (images) {
+        images.forEach((img, idx) => {
+          const card = document.createElement('div');
+          card.className = 'image-card';
+          card.onclick = () => openModal(img.image, img.title, img.desc);
+          card.innerHTML = `
+            <img src="${img.image}" alt="${img.title}" onerror="this.style.background='#ddd'; this.style.color='#999'" />
+            <div class="image-card-info">
+              <div class="image-card-title">${img.title}</div>
+              <div class="image-card-desc">${img.desc}</div>
+            </div>
+          `;
+          gallery.appendChild(card);
+        });
+      }
+    }
+
+    // Modal functions
+    function openModal(imgSrc, title, desc) {
+      const modal = document.getElementById('imageModal');
+      const img = document.getElementById('modalImage');
+      const descElem = document.getElementById('modalDesc');
+      img.src = imgSrc;
+      descElem.innerHTML = `<strong>${title}</strong><br>${desc}`;
+      modal.classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('imageModal').classList.remove('active');
+    }
+
+    // Initialize
+    window.addEventListener('load', () => {
+      populateGallery('week1', 'week1-gallery');
+      populateGallery('week2', 'week2-gallery');
+      populateGallery('week3', 'week3-gallery');
+      populateGallery('week4', 'week4-gallery');
+      populateGallery('week5', 'week5-gallery');
+    });
+
+    // Close modal on background click
+    document.getElementById('imageModal').addEventListener('click', (e) => {
+      if (e.target.id === 'imageModal') closeModal();
+    });
+  </script>
 
 </body>
 </html>
